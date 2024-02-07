@@ -48,8 +48,8 @@ const determineWinner = (userChoice, computerChoice) => {
 
 };
 
-playGame = () => {
-    userChoice = getUserChoice("choose the weapon"); //type your choice in here
+playGame = (userInput) => {
+    userChoice = getUserChoice(userInput);
     if (validChoices.includes(userChoice)) {
         computerChoice = getComputerChoice();
         console.log(`YOUR ${userChoice} against HIS ${computerChoice}`)
@@ -62,4 +62,5 @@ playGame = () => {
     }
 };
 
-playGame();
+//type your choice in here
+playGame("choose your weapon");
