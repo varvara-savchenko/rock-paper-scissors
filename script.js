@@ -5,7 +5,7 @@ const validChoices = ["rock", "paper", "scissors", "infinite power"];
 
 let getUserChoice = userInput => {
     userInput = userInput.toLowerCase();
-    return validChoices.includes(userInput) ? userInput : "Please choose the right weapon: rock, paper or scissors";
+    return userInput;
 };
 
 let getComputerChoice = () => {
@@ -49,7 +49,7 @@ const determineWinner = (userChoice, computerChoice) => {
 };
 
 playGame = () => {
-    userChoice = getUserChoice("choose the weapon"); //type your choice in here
+    userChoice = getUserChoice("2"); //type your choice in here
     if (validChoices.includes(userChoice)) {
         computerChoice = getComputerChoice();
         console.log(`YOUR ${userChoice} against HIS ${computerChoice}`)
