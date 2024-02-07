@@ -1,7 +1,4 @@
-const lossMessage = "Yay, machine has beated you!";
-const winMessage = "You won, humanity is proud! <3";
-const tieMessage = "Tie (too boring, try again).";
-const validChoices = ["rock", "paper", "scissors", "infinite power"];
+const gameVariables = require('./game-variables.js');
 
 let getUserChoice = userInput => {
     userInput = userInput.toLowerCase();
@@ -13,44 +10,41 @@ let getComputerChoice = () => {
     switch (computerInput) {
         case 0:
             return "rock";
-            break;
 
         case 1:
             return "paper";
-            break;
 
         case 2:
             return "scissors";
-            break;
     }
 };
 
 const determineWinner = (userChoice, computerChoice) => {
     if (userChoice === "infinite power") {
-        return "Oh no! Who told you the cheat code? I'm brrrroook01010101#";
+        return gameVariables.secretMessage;
     }
 
     if (userChoice === computerChoice) {
-        return tieMessage;
+        return gameVariables.tieMessage;
     }
 
     if (userChoice === "rock") {
-        return computerChoice === "paper" ? lossMessage : winMessage;
+        return computerChoice === "paper" ? gameVariables.lossMessage : gameVariables.winMessage;
     }
 
     if (userChoice === "paper") {
-        return computerChoice === "scissors" ? lossMessage : winMessage;
+        return computerChoice === "scissors" ? gameVariables.lossMessage : gameVariables.winMessage;
     }
 
     if (userChoice === "scissors") {
-        return computerChoice === "rock" ? lossMessage : winMessage;
+        return computerChoice === "rock" ? gameVariables.lossMessage : gameVariables.winMessage;
     }
 
 };
 
-playGame = (userInput) => {
+playGame = userInput => {
     userChoice = getUserChoice(userInput);
-    if (validChoices.includes(userChoice)) {
+    if (gameVariables.validChoices.includes(userChoice)) {
         computerChoice = getComputerChoice();
         console.log(`YOUR ${userChoice} against HIS ${computerChoice}`)
         //setting timeout to add some drama
